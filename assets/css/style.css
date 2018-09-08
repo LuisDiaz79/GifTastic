@@ -1,0 +1,18 @@
+*{
+    box-sizing: border-box;
+    text-align: center;
+    /* outline: 1px dotted white; */
+}
+
+body{
+    background-color: #000;
+    color: #fff;
+}
+
+.animal{
+    padding: 10px;
+    margin: 10px auto;
+}
+.animalimg{
+    padding: 40px 0;
+}
