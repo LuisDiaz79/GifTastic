@@ -1,4 +1,4 @@
-var animals = ["Cat", "Dog", "Rat"];
+var animals = ["CAT", "DOG", "RAT"];
 
 
 function displayGifInfo() {
@@ -64,7 +64,7 @@ function renderButtons() {
       // Added a data-attribute
       a.attr("data-name", animals[i]);
       // Provided the initial button text
-      a.text(animals[i].toUpperCase());
+      a.text(animals[i]);
       // Added the button to the buttons-view div
       newDiv.append(a);
       $("#buttons").append(newDiv);
@@ -84,10 +84,10 @@ function changeState(){
 $("#add-animal").on("click", function(event) {
     event.preventDefault();
     // This line of code will grab the input from the textbox
-    var animal = $("#animal-input").val().trim();
+    var animal = $("#animal-input").val().trim().toUpperCase();
     
     // The movie from the textbox is then added to our array
-    if(animal.trim() != ""){
+    if(animal.trim() != "" && animals.indexOf(animal)<0){
         animals.push(animal);
     }
 
