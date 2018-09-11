@@ -5,10 +5,30 @@
 }
 
 body{
-    background-color: #000;
-    color: #fff;
+    background-color: darkgray;
+    color: black;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #fff;
+    background-image: url("../images/background.jpg");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
 
+.header{
+    background-image: linear-gradient(to right,black, darkblue, black);
+    color: #fff;
+}
+.title{
+    font-size: 35px;
+    font-weight: bold;
+    color: BLUE;
+}
+.giftxt{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
 .animal{
     padding: 10px;
     margin: 15px auto;

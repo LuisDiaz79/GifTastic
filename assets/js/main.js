@@ -5,6 +5,7 @@ function displayGifInfo() {
 
 
     var animal = $(this).attr("data-name");
+    
     var queryURL = "http://api.giphy.com/v1/gifs/search?q="+animal+"&api_key=Abb4lfRWr16Xt4c0gx47pcmppApoEVXJ&limit=10";
    // Creates AJAX call for the specific movie button being clicked
     $.ajax({
@@ -24,13 +25,21 @@ function displayGifInfo() {
             
             var newDiv = $("<div class='col-12 col-md-6 col-lg-4 span6 animalimg'>");
             
-            var newH1 = $("<h1>");
-            newH1.text(response.Title);
+            var newTitle = $("<h5>");
+            newTitle
+                .addClass("giftxt")
+                .text(result[i].title.toUpperCase());
             var newPoster =$('<img src='+still+'>');
-            newPoster.attr({
-                next: animated
+            newPoster
+                .attr({
+                next: animated,
+                style: "width:90%;"
             });
-            newDiv.append(newH1,newPoster);
+            var newScore = $("<h6>");
+            newScore.text("Score: "+result[i]._score);
+
+            newDiv.append(newTitle,newPoster,newScore);
+
             $animalview.append(newDiv);
         }
     });
@@ -55,7 +64,7 @@ function renderButtons() {
       // Added a data-attribute
       a.attr("data-name", animals[i]);
       // Provided the initial button text
-      a.text(animals[i]);
+      a.text(animals[i].toUpperCase());
       // Added the button to the buttons-view div
       newDiv.append(a);
       $("#buttons").append(newDiv);
@@ -76,9 +85,11 @@ $("#add-animal").on("click", function(event) {
     event.preventDefault();
     // This line of code will grab the input from the textbox
     var animal = $("#animal-input").val().trim();
-
+    
     // The movie from the textbox is then added to our array
-    animals.push(animal);
+    if(animal.trim() != ""){
+        animals.push(animal);
+    }
 
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
